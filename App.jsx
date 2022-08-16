@@ -1,4 +1,12 @@
-import { bankOne, bankTwo } from "./object.js";
+import {
+    bankOne,
+    bankTwo,
+    redColor,
+    grayColor,
+    cyanColor,
+    tealColor,
+    yellowColor,
+} from "./object.js";
 const { useState, useEffect } = React;
 const { Provider, connect } = ReactRedux;
 const $ = document.querySelector.bind(document);
@@ -180,6 +188,51 @@ function Slider(props) {
     );
 }
 
+const ColorPicker = (props) => {
+    const setColor = (rootElement, colors) => {
+        rootElement.style.setProperty("--background-color", colors[1]);
+        rootElement.style.setProperty("--color-1", colors[2]);
+        rootElement.style.setProperty("--color-2", colors[3]);
+        rootElement.style.setProperty("--color-3", colors[4]);
+    };
+    const handleClick = (event) => {
+        let color = event.target.getAttribute("value");
+        let rootElement = $(":root");
+        switch (color) {
+            case "red":
+                setColor(rootElement, redColor);
+                break;
+            case "gray":
+                setColor(rootElement, grayColor);
+                break;
+            case "cyan":
+                setColor(rootElement, cyanColor);
+                break;
+            case "teal":
+                setColor(rootElement, tealColor);
+                break;
+            case "yellow":
+                setColor(rootElement, yellowColor);
+                break;
+            default:
+                setColor(rootElement, tealColor);
+                break;
+        }
+    };
+    return (
+        <ul className="color-picker">
+            {props.colors.map((color, index) => (
+                <li
+                    key={index}
+                    value={color[0]}
+                    style={{ backgroundColor: color[4] }}
+                    onClick={handleClick}
+                ></li>
+            ))}
+        </ul>
+    );
+};
+
 function Control(props) {
     return (
         <div id="control">
@@ -199,6 +252,15 @@ function Control(props) {
             <Slider
                 value={props.volume * 100}
                 updateVolume={props.updateVolume}
+            />
+            <ColorPicker
+                colors={[
+                    redColor,
+                    grayColor,
+                    cyanColor,
+                    tealColor,
+                    yellowColor,
+                ]}
             />
         </div>
     );

@@ -111,3 +111,15 @@ export const bankTwo = [
         url: "https://s3.amazonaws.com/freecodecamp/drums/Brk_Snr.mp3",
     },
 ];
+
+export const redColor = ["red", "#fff5f5", "#ff6b6b", "#f03e3e", "#e03131"];
+export const grayColor = ["gray", "#f8f9fa", "#adb5bd", "#495057", "#343a40"];
+export const cyanColor = ["cyan", "#e3fafc", "#22b8cf", "#1098ad", "#0c8599"];
+export const tealColor = ["teal", "#e6fcf5", "#20c997", "#0ca678", "#099268"];
+export const yellowColor = [
+    "yellow",
+    "#fff9db",
+    "#fcc419",
+    "#f59f00",
+    "#f08c00",
+];
