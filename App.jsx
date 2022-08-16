@@ -7,58 +7,17 @@ import {
     tealColor,
     yellowColor,
 } from "./object.js";
+import {
+    store,
+    drumPressAction,
+    powerClickAction,
+    bankClickAction,
+    updateVolumeAction,
+} from "./ReduxStore.js";
 const { useState, useEffect } = React;
 const { Provider, connect } = ReactRedux;
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
-
-// Redux
-const DRUM_PRESS = "DRUM_PRESS";
-const POWER_CLICK = "POWER_CLICK";
-const BANK_CLICK = "BANK_CLICK";
-const UPDATE_VOLUME = "UPDATE_VOLUME";
-
-const drumPressAction = (drumButtonName) => ({
-    type: DRUM_PRESS,
-    drumButtonName,
-});
-
-const powerClickAction = (isOn) => ({
-    type: POWER_CLICK,
-    isOn,
-});
-
-const bankClickAction = (isOn) => ({
-    type: BANK_CLICK,
-    isOn,
-});
-
-const updateVolumeAction = (volume) => ({
-    type: UPDATE_VOLUME,
-    volume,
-});
-
-const defaultState = {
-    lastDrumButtonName: "",
-    power: true,
-    bank: false,
-    volume: 0.3,
-};
-const reducer = (state = defaultState, action) => {
-    switch (action.type) {
-        case DRUM_PRESS:
-            return { ...state, lastDrumButtonName: action.drumButtonName };
-        case POWER_CLICK:
-            return { ...state, power: !state.power };
-        case BANK_CLICK:
-            return { ...state, bank: !state.bank };
-        case UPDATE_VOLUME:
-            return { ...state, volume: action.volume };
-        default:
-            return state;
-    }
-};
-const store = Redux.createStore(reducer);
 
 // React
 
